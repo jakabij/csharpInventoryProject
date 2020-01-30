@@ -4,7 +4,8 @@ using System.Text;
 
 namespace InventoryProject
 {
-    class CDProduct
+    public class CDProduct:Product
     {
+       public int NumOfTracks { get; set; }
     }
 }

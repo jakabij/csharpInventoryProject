@@ -6,7 +6,8 @@ namespace InventoryProject
     {
         static void Main(string[] args)
         {
-            
+            StoreManager manager = new StoreManager();
+            manager.AddStorage()
         }
     }
 }

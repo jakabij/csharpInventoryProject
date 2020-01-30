@@ -4,7 +4,10 @@ using System.Text;
 
 namespace InventoryProject
 {
-    interface StorageCapable
+    public interface StorageCapable
     {
+        List<Product> GetAllProduct();
+        void StoreCdProduct(string name,int price, int tracks);
+        void StoreBookProduct(string name, int price, int pages);
     }
 }
