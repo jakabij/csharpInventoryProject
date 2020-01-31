@@ -8,6 +8,9 @@ namespace InventoryProject
 {
     public abstract class Store : StorageCapable
     {
+        public List<Product> products=new List<Product>();
+
+
         public void SaveToXml(Product product)
         {
             XmlSerializer xml = new XmlSerializer(typeof(Product));
@@ -22,41 +25,62 @@ namespace InventoryProject
 
         public Product CreateProduct(string type,string name,int price,int size)
         {
-            return null;
+            Product product;
+            if(type.ToLower().Equals("cd"))
+            {
+                product = new CDProduct(name, price, size);
+            }
+            else if(type.ToLower().Equals("book"))
+            {
+                product = new BookProduct(name, price, size);
+            }
+            else
+            {
+                throw new Exception("No type like that!");
+            }
+
+            return product;
         }
 
-        public List<Product> LoadProducts()
+
+
+
+        public List<Product> LoadProducts()         //////////////////////////////////////////
         {
-            return null;
+            return products;
         }
 
-        public void store(Product product)
+
+
+
+
+
+
+
+        public void ToStore(Product product)
         {
-            //SaveToXml();
-            //StoreProduct();
+            SaveToXml(product);
+            StoreProduct(product);
         }
-
-
-
-
-
-
-
-
 
         public List<Product> GetAllProduct()
         {
-            throw new NotImplementedException();
-        }
-
-        public void StoreCdProduct(string name, int price, int tracks)
-        {
-            throw new NotImplementedException();
+            return products;
         }
 
         public void StoreBookProduct(string name, int price, int pages)
         {
-            throw new NotImplementedException();
+            Product resultProduct = CreateProduct("Book", name, price, pages);
+            ToStore(resultProduct);
         }
+
+        public void StoreCdProduct(string name, int price, int tracks)
+        {
+            Product resultProduct = CreateProduct("CD", name, price, tracks);
+            ToStore(resultProduct);
+        }
+
+
+
     }
 }
