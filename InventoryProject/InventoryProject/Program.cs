@@ -7,7 +7,9 @@ namespace InventoryProject
         static void Main(string[] args)
         {
             StoreManager manager = new StoreManager();
-            manager.AddStorage()
+            StorageCapable capable=null;
+            manager.AddStorage(capable);
+            manager.AddCDProduct("ASD", 2, 10);
         }
     }
 }
