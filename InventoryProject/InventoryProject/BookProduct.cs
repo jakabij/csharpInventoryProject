@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace InventoryProject
 {
     public class BookProduct :Product
     {
+        [XmlAttribute("size")]
         public int NumOfPages { get; set; } 
 
+        public BookProduct()
+        {
+
+        }
         public BookProduct(string name,int price,int pages)
         {
             this.Name = name;

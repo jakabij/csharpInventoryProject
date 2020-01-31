@@ -6,11 +6,21 @@ namespace InventoryProject
     {
         static void Main(string[] args)
         {
-            StoreManager manager = new StoreManager();
+            StoreManager storeManager = new StoreManager();
+            StorageCapable storage = new PersistentStore();
 
-            StorageCapable capable=null;
-            manager.AddStorage(capable);
-            manager.AddCDProduct("ASD", 2, 10);
+            storeManager.AddStorage(storage);
+
+            storeManager.AddBookProduct("Star Wars", 3500, 420);
+            storeManager.AddBookProduct("Game of Thrones", 4999, 2000);
+           
+            storeManager.AddCDProduct("Song1", 2100, 3);
+            storeManager.AddCDProduct("Song2", 1050, 2);
+            storeManager.AddCDProduct("Song3", 500, 1);
+
+
+
+           Console.WriteLine("In the store: "+storeManager.ListProducts());
         }
     }
 }

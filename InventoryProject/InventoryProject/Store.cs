@@ -8,18 +8,20 @@ namespace InventoryProject
 {
     public abstract class Store : StorageCapable
     {
+       
         public List<Product> products=new List<Product>();
-
 
         public void SaveToXml(Product product)
         {
-            XmlSerializer xml = new XmlSerializer(typeof(Product));
+            
             using (StreamWriter writer = new StreamWriter("products.xml"))
             {
-                xml.Serialize(writer, product);
+                //XmlRootAttribute attribute = new XmlRootAttribute("Products");
+                //XmlSerializer xml = new XmlSerializer(typeof(List<Product>),attribute);
+                XmlSerializer xml = new XmlSerializer(typeof(List<Product>));
+                xml.Serialize(writer, this.products);
             }
         }
-
 
         public abstract void StoreProduct(Product product);
 
@@ -42,25 +44,23 @@ namespace InventoryProject
             return product;
         }
 
-
-
-
-        public List<Product> LoadProducts()         //////////////////////////////////////////
+        public List<Product> LoadProducts()
         {
-            return products;
+            XmlSerializer xml = new XmlSerializer(typeof(List<Product>));
+            List<Product> allProduct = new List<Product>();
+            using (FileStream reader = File.OpenRead("products.xml"))
+            {
+                allProduct = (List<Product>)xml.Deserialize(reader);
+            }
+
+            return allProduct;
         }
-
-
-
-
-
-
 
 
         public void ToStore(Product product)
         {
-            SaveToXml(product);
             StoreProduct(product);
+            SaveToXml(product);
         }
 
         public List<Product> GetAllProduct()
@@ -79,8 +79,5 @@ namespace InventoryProject
             Product resultProduct = CreateProduct("CD", name, price, tracks);
             ToStore(resultProduct);
         }
-
-
-
     }
 }

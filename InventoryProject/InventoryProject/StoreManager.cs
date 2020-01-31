@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace InventoryProject
 {
-    public class StoreManager : StorageCapable
+    public class StoreManager
     {
 
         StorageCapable storageCapable;
@@ -36,7 +36,7 @@ namespace InventoryProject
                 result += products[count].Name;
                 result += ", ";
             }
-            return result += products[count];
+            return result += products[count].Name;
         }
 
 
@@ -50,17 +50,6 @@ namespace InventoryProject
             }
 
             return allProduct;
-        }
-
-        public void StoreCdProduct(string name, int price, int tracks)
-        {
-            Store store;
-            store.StoreCdProduct(name, price, tracks);
-        }
-
-        public void StoreBookProduct(string name, int price, int pages)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace InventoryProject
 {
     public class CDProduct:Product
     {
-       public int NumOfTracks { get; set; }
+        [XmlAttribute("size")]
+        public int NumOfTracks { get; set; }
 
+        public CDProduct()
+        {
+
+        }
         public CDProduct(string name,int price,int tracks)
         {
             this.Name = name;
