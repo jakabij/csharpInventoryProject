@@ -17,7 +17,7 @@ namespace InventoryProject
             using (StreamWriter writer = new StreamWriter("products.xml"))
             {
                 //XmlRootAttribute attribute = new XmlRootAttribute("Products");
-                //XmlSerializer xml = new XmlSerializer(typeof(List<Product>),attribute);
+                //XmlSerializer xml = new XmlSerializer(typeof(List<Product>),attribute);   Doesn't work like that
                 XmlSerializer xml = new XmlSerializer(typeof(List<Product>));
                 xml.Serialize(writer, this.products);
             }
