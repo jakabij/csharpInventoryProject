@@ -14,9 +14,9 @@ namespace InventoryProject
             storeManager.AddBookProduct("Star Wars", 3500, 420);
             storeManager.AddBookProduct("Game of Thrones", 4999, 2000);
            
-            storeManager.AddCDProduct("Song1", 2100, 3);
+            storeManager.AddCDProduct("Song1", 2100, 1);
             storeManager.AddCDProduct("Song2", 1050, 2);
-            storeManager.AddCDProduct("Song3", 500, 1);
+            storeManager.AddCDProduct("Song3", 500, 3);
 
 
 

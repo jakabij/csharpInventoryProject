@@ -42,14 +42,21 @@ namespace InventoryProject
 
         public List<Product> GetAllProduct()
         {
-            XmlSerializer xml = new XmlSerializer(typeof(List<Product>));
-            List<Product> allProduct = new List<Product>();
-            using (FileStream reader = File.OpenRead("products.xml"))
+            try 
             {
-                allProduct=(List<Product>)xml.Deserialize(reader);
-            }
+                XmlSerializer xml = new XmlSerializer(typeof(List<Product>));
+                List<Product> allProduct = new List<Product>();
+                using (FileStream reader = File.OpenRead("products.xml"))
+                {
+                    allProduct=(List<Product>)xml.Deserialize(reader);
+                }
 
-            return allProduct;
+                return allProduct;
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }
